@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gonet - Nosotros</title>
+
+  <!-- Favicons -->
+  <link rel="apple-touch-icon" sizes="180x180" href="../img/favicon_io/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="../img/favicon_io/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="../img/favicon_io/favicon-16x16.png">
+  <link rel="manifest" href="../img/favicon_io/site.webmanifest">
+  <link rel="shortcut icon" href="../img/favicon_io/favicon.ico">
+
+  <!-- CSS de Tailwind vÃ­a CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Configuración Personalizada de Tailwind -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              dark: '#12051E',
+              purple: '#4b2164',
+              primary: '#ec6608',
+              cyan: '#00f2fe',
+              blue: '#4facfe'
+            }
+          },
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Iconos Phosphor -->
+  <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+  <!-- CSS Personalizado -->
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body class="text-white antialiased bg-brand-dark">
+
+  <!-- Pantalla de Carga -->
+  <div id="preloader"
+    class="fixed inset-0 z-[9999] bg-[#0c0314] flex items-center justify-center transition-opacity duration-500">
+    <div class="flex flex-col items-center">
+      <div
+        class="w-16 h-16 border-4 border-white/10 border-t-brand-primary rounded-full animate-spin mb-4 shadow-[0_0_15px_rgba(236,102,8,0.5)]">
+      </div>
+      <div class="text-brand-cyan font-bold tracking-widest animate-pulse text-sm">CARGANDO...</div>
+    </div>
+  </div>
+
+  <!-- Encabezado principal -->
+  <header id="main-header"
+    class="fixed w-full z-50 top-0 transition-all duration-300 glass-nav-scrolled border-b border-white/10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-20">
+        <!-- Logotipo -->
+        <div class="flex-shrink-0 flex items-center">
+          <a href="../index.html" class="flex items-center">
+            <img src="../img/logo-gonet-fin.png" alt="Gonet Logo"
+              class="h-10 md:h-12 object-contain drop-shadow-[0_0_10px_rgba(255,255,255,0.2)] hover:scale-105 transition-transform duration-300">
+          </a>
+        </div>
+
+        <!-- Navegación de Escritorio -->
+        <nav class="hidden md:flex space-x-8">
+          <a href="../index.html"
+            class="text-gray-300 hover:text-white hover:text-glow-secondary transition px-3 py-2 text-sm font-medium">Inicio</a>
+          <a href="#"
+            class="text-white hover:text-white hover:text-glow-secondary transition px-3 py-2 text-sm font-bold text-glow-secondary">Nosotros</a>
+          <a href="../index.html#planes"
+            class="text-gray-300 hover:text-white hover:text-glow-secondary transition px-3 py-2 text-sm font-medium">Planes</a>
+          <a href="../empresas/index.html"
+            class="text-brand-cyan hover:text-white hover:text-glow-secondary transition px-3 py-2 text-sm font-bold">Empresas</a>
+        </nav>
+
+        <!-- Llamado a la Acción -->
+        <div class="hidden md:flex items-center">
+          <a href="tel:933046750"
+            class="btn-primary px-4 py-2 rounded-full font-bold text-sm tracking-wide shadow-lg flex items-center gap-2">
+            <svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 -960 960 960" width="20px"
+              fill="currentColor">
+              <path
+                d="M798-120q-125 0-247-54.5T329-329Q229-429 174.5-551T120-798q0-18 12-30t30-12h162q14 0 25 9.5t13 22.5l26 140q2 16-1 27t-11 19l-97 98q20 37 47.5 71.5T387-386q31 31 65 57.5t72 48.5l94-94q9-9 23.5-13.5T670-390l138 28q14 4 23 14.5t9 23.5v162q0 18-12 30t-30 12Z">
+              </path>
+            </svg> Ventas: 933046750
+          </a>
+        </div>
+
+        <!-- Botón del Menú Móvil -->
+        <div class="md:hidden flex items-center">
+          <button id="mobile-menu-btn" class="text-gray-300 hover:text-white focus:outline-none">
+            <i class="ph ph-list text-3xl"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Menú Móvil -->
+    <div id="mobile-menu" class="hidden glass absolute top-full left-0 w-full md:hidden border-t border-gray-800">
+      <div class="px-4 pt-2 pb-6 space-y-1">
+        <a href="../index.html"
+          class="block px-3 py-3 rounded-md text-base font-medium text-white hover:bg-brand-purple hover:bg-opacity-50">Inicio</a>
+        <a href="#" class="block px-3 py-3 rounded-md text-base font-bold text-white bg-white/10">Nosotros</a>
+        <a href="../index.html#planes"
+          class="block px-3 py-3 rounded-md text-base font-medium text-white hover:bg-brand-purple hover:bg-opacity-50">Planes</a>
+        <a href="../empresas/index.html"
+          class="block px-3 py-3 rounded-md text-base font-bold text-brand-cyan hover:bg-brand-purple hover:bg-opacity-50">Empresas</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- SecciÃ³n Principal (Hero) -->
+  <section class="pt-32 pb-20 md:pt-48 md:pb-32 relative overflow-hidden">
+    <div class="absolute inset-0 bg-brand-purple/20 blur-3xl z-0 pointer-events-none"></div>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div class="text-center max-w-3xl mx-auto">
+        <h1 class="text-5xl md:text-7xl font-extrabold tracking-tight mb-8">
+          Conectando el futuro de <span class="text-brand-primary text-glow-primary">Apurímac</span>
+        </h1>
+        <p class="text-xl text-gray-300 font-light leading-relaxed mb-10">
+          Somos Gonet, una empresa peruana comprometida con brindar la red de fibra óptica más rápida, confiable y
+          moderna a nuestros clientes residenciales y corporativos.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Misión y Visión -->
+  <section class="py-16 relative z-10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-2 gap-12">
+      <div class="glass-card p-10 rounded-3xl">
+        <div
+          class="w-16 h-16 rounded-full bg-brand-primary/20 flex items-center justify-center text-brand-primary mb-6">
+          <i class="ph-bold ph-target text-3xl text-glow-primary"></i>
+        </div>
+        <h2 class="text-3xl font-bold mb-4">Misión</h2>
+        <p class="text-gray-300 leading-relaxed text-lg">Acortar las distancias tecnológicas brindando un servicio de
+          conectividad a internet de excelencia, con atención local rápida y tecnología de punta que potencie el
+          desarrollo de nuestra región.</p>
+      </div>
+      <div class="glass-card p-10 rounded-3xl border-brand-cyan/30">
+        <div class="w-16 h-16 rounded-full bg-brand-cyan/20 flex items-center justify-center text-brand-cyan mb-6">
+          <i class="ph-bold ph-eye text-3xl text-glow-secondary"></i>
+        </div>
+        <h2 class="text-3xl font-bold mb-4 text-brand-cyan">Visión</h2>
+        <p class="text-gray-300 leading-relaxed text-lg">Ser reconocidos como el proveedor líder de telecomunicaciones,
+          proyectando una red robusta y segura que sea el motor digital del futuro para empresas y familias.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pie de Página -->
+  <footer class="bg-[#0c0314] py-16 border-t border-white/5 relative z-10 mt-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
+        <div>
+          <a href="../index.html" class="text-3xl font-black italic tracking-tighter text-white block mb-4">
+            GO<span class="text-brand-primary">NET</span>
+          </a>
+          <p class="text-gray-400 text-sm mb-6 leading-relaxed">Conectando hogares y empresas con la red de fibra óptica
+            más estable y rápida de la región. El futuro a tu alcance.</p>
+        </div>
+        <div>
+          <h4 class="font-bold text-lg mb-6">Enlaces</h4>
+          <ul class="space-y-4 text-gray-400 text-sm">
+            <li><a href="../index.html" class="hover:text-brand-primary transition">Inicio</a></li>
+            <li><a href="#" class="hover:text-brand-primary transition text-white">Nosotros</a></li>
+            <li><a href="../index.html#planes" class="hover:text-brand-primary transition">Planes Hogar</a></li>
+            <li><a href="../empresas/index.html"
+                class="hover:text-brand-primary transition font-bold text-brand-cyan">Planes Empresas</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="font-bold text-lg mb-6">Contacto</h4>
+          <ul class="space-y-4 text-gray-400 text-sm">
+            <li><span class="block text-xs uppercase text-gray-600 mb-1">Central:</span> 933046750 - 947615656</li>
+            <li><span class="block text-xs uppercase text-gray-600 mb-1">Email:</span> corp.gonet@gmail.com</li>
+          </ul>
+        </div>
+      </div>
+      <div class="border-t border-white/5 pt-8 text-center text-xs text-gray-500">
+        <p>&copy; 2026 WairaTvGo Telecomunicaciones. Todos los derechos reservados.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Botón Flotante y Modal de WhatsApp -->
+  <div class="fixed bottom-6 right-6 z-50 flex flex-col items-end">
+    <!-- Modal de WhatsApp -->
+    <div id="wa-modal"
+      class="hidden transform transition-all duration-300 origin-bottom-right scale-0 opacity-0 mb-4 w-80 shadow-[0_8px_32px_rgba(0,0,0,0.5)] border border-brand-cyan/20 rounded-2xl overflow-hidden glass-card">
+      <!-- Disparador del Parseador de Tailwind CDN -->
+      <span class="scale-100 opacity-100 hidden"></span>
+      <!-- Encabezado del Modal -->
+      <div class="bg-gradient-to-r from-[#075E54] to-[#128C7E] p-4 flex justify-between items-center text-white">
+        <div class="flex items-center space-x-3">
+          <img src="../img/whatsapp-icon.png" alt="WhatsApp" class="w-8 h-8 object-contain">
+          <h4 class="font-bold text-sm leading-tight text-left">Hola 👋, ¿te ayudamos por WhatsApp?</h4>
+        </div>
+        <button id="close-wa-modal" class="text-white hover:text-gray-200 focus:outline-none ml-2">
+          <i class="ph-bold ph-x text-lg"></i>
+        </button>
+      </div>
+      <!-- Cuerpo del Modal (Opciones) -->
+      <div class="p-4 bg-[#0a0410] bg-opacity-95 space-y-3">
+        <a href="https://wa.me/51933046750?text=Hola,%20soy%20cliente%20y%20tengo%20una%20consulta" target="_blank"
+          class="flex items-center p-3 rounded-xl bg-white/5 hover:bg-white/10 border border-white/5 transition-colors group">
+          <span class="text-2xl mr-3 group-hover:scale-110 transition-transform">🧑‍💼</span>
+          <span class="text-sm font-bold text-gray-200 group-hover:text-white">Soy Cliente y tengo una consulta</span>
+        </a>
+        <a href="https://wa.me/51933046750?text=Hola,%20quiero%20comprar%20Internet" target="_blank"
+          class="flex items-center p-3 rounded-xl bg-white/5 hover:bg-white/10 border border-white/5 transition-colors group">
+          <span class="text-2xl mr-3 group-hover:scale-110 transition-transform">🚀</span>
+          <span class="text-sm font-bold text-gray-200 group-hover:text-white">Quiero comprar Internet</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- Botón Flotante con Tooltip -->
+    <div class="relative group">
+      <!-- Tooltip -->
+      <div
+        class="absolute right-full top-1/2 -translate-y-1/2 mr-4 px-3 py-1.5 bg-white text-gray-900 text-sm font-bold rounded-lg shadow-lg opacity-0 pointer-events-none group-hover:opacity-100 transition-opacity whitespace-nowrap">
+        ¿Necesitas Ayuda?
+        <!-- Flecha del Tooltip -->
+        <div
+          class="absolute top-1/2 -right-1.5 -translate-y-1/2 border-t-4 border-b-4 border-l-4 border-transparent border-l-white">
+        </div>
+      </div>
+      <!-- Botón -->
+      <button id="wa-btn"
+        class="w-16 h-16 rounded-full bg-[#25D366] hover:bg-[#1EBE5D] flex items-center justify-center shadow-[0_0_20px_rgba(37,211,102,0.4)] hover:shadow-[0_0_30px_rgba(37,211,102,0.6)] transition-all transform hover:-translate-y-1 focus:outline-none">
+        <img src="../img/whatsapp-icon.png" alt="WhatsApp" class="w-10 h-10 object-contain">
+      </button>
+    </div>
+  </div>
+
+  <!-- JS Personalizado -->
+  <script src="../js/main.js?v=1.1"></script>
+</body>
+
+</html>

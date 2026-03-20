@@ -1,0 +1,1128 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gonet - Internet de Alta Velocidad & TV Digital</title>
+
+  <!-- Favicons -->
+  <link rel="apple-touch-icon" sizes="180x180" href="img/favicon_io/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="img/favicon_io/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="img/favicon_io/favicon-16x16.png">
+  <link rel="manifest" href="img/favicon_io/site.webmanifest">
+  <link rel="shortcut icon" href="img/favicon_io/favicon.ico">
+
+  <!-- CSS de Swiper -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
+  <!-- CSS de Tailwind vÃ­a CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Configuración Personalizada de Tailwind -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              dark: '#12051E',
+              purple: '#652482',
+              primary: '#ec6608',
+              cyan: '#00f2fe',
+              blue: '#4facfe'
+            }
+          },
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Iconos Phosphor para Interfaz Futurista -->
+  <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+  <!-- CSS Personalizado -->
+  <link rel="stylesheet" href="css/style.css?v=1.1">
+</head>
+
+<body class="text-white antialiased">
+
+  <!-- Pantalla de Carga -->
+  <div id="preloader"
+    class="fixed inset-0 z-[9999] bg-[#0c0314] flex items-center justify-center transition-opacity duration-500">
+    <div class="flex flex-col items-center">
+      <div
+        class="w-16 h-16 border-4 border-white/10 border-t-brand-primary rounded-full animate-spin mb-4 shadow-[0_0_15px_rgba(236,102,8,0.5)]">
+      </div>
+      <div class="text-brand-cyan font-bold tracking-widest animate-pulse text-sm">CARGANDO...</div>
+    </div>
+  </div>
+
+  <!-- Encabezado principal -->
+  <header id="main-header"
+    class="fixed w-full z-50 top-0 transition-all duration-300 bg-transparent border-transparent">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-20">
+        <!-- Logotipo -->
+        <div class="flex-shrink-0 flex items-center">
+          <a href="index.html" class="flex items-center">
+            <img src="img/logo-gonet-fin.png" alt="Gonet Logo"
+              class="h-10 md:h-12 object-contain drop-shadow-[0_0_10px_rgba(255,255,255,0.2)] hover:scale-105 transition-transform duration-300">
+          </a>
+        </div>
+
+        <!-- Navegación de Escritorio -->
+        <nav class="hidden md:flex space-x-8">
+          <a href="#"
+            class="text-gray-300 hover:text-white hover:text-glow-secondary transition px-3 py-2 text-sm font-medium">Inicio</a>
+          <a href="nosotros/index.html"
+            class="text-gray-300 hover:text-white hover:text-glow-secondary transition px-3 py-2 text-sm font-medium">Nosotros</a>
+          <a href="#planes"
+            class="text-gray-300 hover:text-white hover:text-glow-secondary transition px-3 py-2 text-sm font-medium">Planes</a>
+          <a href="empresas/index.html"
+            class="text-brand-cyan hover:text-white hover:text-glow-secondary transition px-3 py-2 text-sm font-bold">Empresas</a>
+        </nav>
+
+        <!-- Llamado a la Acción -->
+        <div class="hidden md:flex items-center">
+          <a href="tel:933046750"
+            class="btn-primary px-4 py-2 rounded-full font-bold text-sm tracking-wide shadow-lg flex items-center gap-2">
+            <svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 -960 960 960" width="20px"
+              fill="currentColor">
+              <path
+                d="M798-120q-125 0-247-54.5T329-329Q229-429 174.5-551T120-798q0-18 12-30t30-12h162q14 0 25 9.5t13 22.5l26 140q2 16-1 27t-11 19l-97 98q20 37 47.5 71.5T387-386q31 31 65 57.5t72 48.5l94-94q9-9 23.5-13.5T670-390l138 28q14 4 23 14.5t9 23.5v162q0 18-12 30t-30 12Z">
+              </path>
+            </svg> Ventas: 933046750
+          </a>
+        </div>
+
+        <!-- Botón del Menú Móvil -->
+        <div class="md:hidden flex items-center">
+          <button id="mobile-menu-btn" class="text-gray-300 hover:text-white focus:outline-none">
+            <i class="ph ph-list text-3xl"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Menú Móvil -->
+    <div id="mobile-menu" class="hidden glass absolute top-full left-0 w-full md:hidden border-t border-gray-800">
+      <div class="px-4 pt-2 pb-6 space-y-1">
+        <a href="#"
+          class="block px-3 py-3 rounded-md text-base font-medium text-white hover:bg-brand-purple hover:bg-opacity-50">Inicio</a>
+        <a href="nosotros/index.html"
+          class="block px-3 py-3 rounded-md text-base font-medium text-white hover:bg-brand-purple hover:bg-opacity-50">Nosotros</a>
+        <a href="#planes"
+          class="block px-3 py-3 rounded-md text-base font-medium text-white hover:bg-brand-purple hover:bg-opacity-50">Planes</a>
+        <a href="empresas/index.html"
+          class="block px-3 py-3 rounded-md text-base font-bold text-brand-cyan hover:bg-brand-purple hover:bg-opacity-50">Empresas</a>
+        <div class="mt-4 px-3">
+          <a href="tel:933046750"
+            class="w-full text-center btn-primary px-6 py-3 rounded-full font-bold flex items-center justify-center gap-2">
+            <svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 -960 960 960" width="20px"
+              fill="currentColor">
+              <path
+                d="M798-120q-125 0-247-54.5T329-329Q229-429 174.5-551T120-798q0-18 12-30t30-12h162q14 0 25 9.5t13 22.5l26 140q2 16-1 27t-11 19l-97 98q20 37 47.5 71.5T387-386q31 31 65 57.5t72 48.5l94-94q9-9 23.5-13.5T670-390l138 28q14 4 23 14.5t9 23.5v162q0 18-12 30t-30 12Z">
+              </path>
+            </svg>
+            Ventas: 933046750
+          </a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Sección Principal (Hero) -->
+  <section class="relative h-screen flex items-center justify-center overflow-hidden">
+    <!-- Contenedor de Swiper -->
+    <div class="swiper hero-swiper absolute inset-0 w-full h-full z-0">
+      <div class="swiper-wrapper">
+        <!-- Diapositiva 1 -->
+        <div class="swiper-slide relative">
+          <div class="absolute inset-0 bg-gradient-to-r from-brand-dark via-brand-dark/80 to-transparent z-10"></div>
+          <!-- Imagen abstracta tecnológica oscura de Unsplash -->
+          <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?q=80&w=2000&auto=format&fit=crop"
+            alt="Server room" class="absolute w-full h-full object-cover">
+
+          <div class="relative z-20 h-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center">
+            <div class="w-full md:w-2/3 lg:w-1/2 pt-20">
+              <span
+                class="inline-block py-1 px-3 rounded-full border border-brand-cyan/30 bg-brand-cyan/10 text-brand-cyan text-sm font-semibold mb-6 animate-pulse">
+                Nuevo servicio premium
+              </span>
+              <h1 class="text-5xl md:text-6xl font-extrabold tracking-tight mb-6 leading-tight">
+                Internet de alta velocidad <span class="text-brand-primary text-glow-primary">sin interrupciones</span>
+              </h1>
+              <p class="text-xl md:text-2xl text-gray-300 mb-10 max-w-lg leading-relaxed font-light">
+                Conectividad estable y simétrica para tu hogar y negocio. El futuro hoy.
+              </p>
+              <div class="flex flex-col sm:flex-row gap-4">
+                <a href="#planes" class="btn-primary text-center px-8 py-4 rounded-full font-bold text-lg">Ver
+                  planes</a>
+                <a href="nosotros/index.html"
+                  class="glass text-center px-8 py-4 rounded-full font-semibold text-lg hover:bg-white/10 transition">Saber
+                  más</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Diapositiva 2 -->
+        <div class="swiper-slide relative">
+          <div class="absolute inset-0 bg-gradient-to-r from-brand-dark via-brand-dark/80 to-transparent z-10"></div>
+          <img src="https://images.unsplash.com/photo-1593784991095-a205069470b6?q=80&w=2000&auto=format&fit=crop"
+            alt="TV setup" class="absolute w-full h-full object-cover">
+
+          <div class="relative z-20 h-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center">
+            <div class="w-full md:w-2/3 lg:w-1/2 pt-20">
+              <span
+                class="inline-block py-1 px-3 rounded-full border border-brand-primary/30 bg-brand-primary/10 text-brand-primary text-sm font-semibold mb-6 animate-pulse">
+                Combo perfecto
+              </span>
+              <h1 class="text-5xl md:text-7xl font-extrabold tracking-tight text-white mb-6 leading-tight">
+                Internet + <span class="text-gradient-brand">TV Digital</span> en un solo servicio
+              </h1>
+              <p class="text-xl md:text-2xl text-gray-300 mb-10 max-w-lg leading-relaxed font-light">
+                Entretenimiento en 4K y velocidad sin límites en un solo paquete.
+              </p>
+              <a href="#planes"
+                class="btn-primary inline-block text-center px-8 py-4 rounded-full font-bold text-lg">Contratar
+                ahora</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Controles de Swiper -->
+      <div class="swiper-pagination mb-4"></div>
+      <div class="swiper-button-prev ml-4 hidden md:flex"></div>
+      <div class="swiper-button-next mr-4 hidden md:flex"></div>
+    </div>
+  </section>
+
+  <!-- Tarjetas de CaracterÃ­sticas -->
+  <section class="relative z-30 -mt-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div class="glass-card p-6 rounded-2xl flex items-center space-x-4">
+        <div
+          class="w-16 h-16 rounded-full bg-brand-primary/20 flex items-center justify-center text-brand-primary shrink-0 text-glow-primary">
+          <i class="ph-fill ph-rocket-launch text-3xl animate-float"></i>
+        </div>
+        <div>
+          <h3 class="text-xl font-bold">100% Fibra Óptica</h3>
+          <p class="text-gray-400 text-sm mt-1">Velocidad simétrica total.</p>
+        </div>
+      </div>
+
+      <div class="glass-card p-6 rounded-2xl flex items-center space-x-4">
+        <div
+          class="w-16 h-16 rounded-full bg-brand-cyan/20 flex items-center justify-center text-brand-cyan shrink-0 text-glow-secondary">
+          <i class="ph-fill ph-wifi-high text-3xl animate-float-delayed"></i>
+        </div>
+        <div>
+          <h3 class="text-xl font-bold">Sin Caídas</h3>
+          <p class="text-gray-400 text-sm mt-1">Estabilidad garantizada 24/7.</p>
+        </div>
+      </div>
+
+      <div class="glass-card p-6 rounded-2xl flex items-center space-x-4">
+        <div
+          class="w-16 h-16 rounded-full bg-brand-purple/40 flex items-center justify-center text-purple-400 shrink-0">
+          <i class="ph-fill ph-headset text-3xl animate-float"></i>
+        </div>
+        <div>
+          <h3 class="text-xl font-bold">Soporte Local</h3>
+          <p class="text-gray-400 text-sm mt-1">Atención rápida y eficaz.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sección de Planes -->
+  <section id="planes" class="py-24 relative z-10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-3xl mx-auto mb-16">
+        <h2 class="text-brand-primary font-bold tracking-wider uppercase text-sm mb-2">Nuestros Servicios</h2>
+        <h3 class="text-4xl md:text-5xl font-black mb-6">Planes diseñados para ti</h3>
+        <p class="text-gray-400 text-lg">Elige la velocidad que mejor se adapte a tu necesidad. Todos nuestros planes
+          incluyen instalación gratuita.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <!-- Tarjeta 1 (200 Mbps) -->
+        <div class="glass-card rounded-3xl p-8 flex flex-col relative top-0 hover:-top-2 transition-all duration-300">
+          <div class="mb-6">
+            <h4 class="text-gray-400 font-semibold mb-2 uppercase tracking-wide">Básico</h4>
+            <div class="flex items-end">
+              <span class="text-5xl font-black text-white">200</span>
+              <span class="text-xl text-gray-400 ml-2 mb-1">Mbps</span>
+            </div>
+            <div class="mt-4 text-3xl font-bold text-brand-primary">S/ 50.00 <span
+                class="text-sm text-gray-500 font-normal">/mes</span></div>
+          </div>
+          <ul class="space-y-4 mb-8 flex-1">
+            <li class="flex items-center text-gray-300"><i
+                class="ph-bold ph-wifi-high text-brand-primary mr-3 text-xl"></i> Fibra Óptica 100%</li>
+            <li class="flex items-center text-gray-300"><i
+                class="ph-bold ph-arrows-down-up text-brand-primary mr-3 text-xl"></i> Velocidad simétrica</li>
+            <li class="flex items-center text-gray-300"><i
+                class="ph-bold ph-download-simple text-brand-primary mr-3 text-xl"></i> Descargas ilimitadas</li>
+            <li class="flex items-center text-gray-300"><i
+                class="ph-bold ph-users-three text-brand-primary mr-3 text-xl"></i> Múltiples conexiones</li>
+          </ul>
+          <a href="https://wa.me/51933046750?text=Hola,%20quiero%20el%20Plan%20Basico%20de%20200%20Mbps" target="_blank"
+            class="btn-outline-glow block w-full text-center py-3 rounded-xl font-bold">Solicitar</a>
+        </div>
+
+        <!-- Tarjeta 3 (250 Mbps) -->
+        <div class="glass-card rounded-3xl p-8 flex flex-col relative top-0 hover:-top-2 transition-all duration-300">
+          <div class="mb-6">
+            <h4 class="text-gray-400 font-semibold mb-2 uppercase tracking-wide">Familiar</h4>
+            <div class="flex items-end">
+              <span class="text-5xl font-black text-white">250</span>
+              <span class="text-xl text-gray-400 ml-2 mb-1">Mbps</span>
+            </div>
+            <div class="mt-4 text-3xl font-bold text-brand-primary">S/ 70.00 <span
+                class="text-sm text-gray-500 font-normal">/mes</span></div>
+          </div>
+          <ul class="space-y-4 mb-8 flex-1">
+            <li class="flex items-center text-gray-300"><i
+                class="ph-bold ph-wifi-high text-brand-primary mr-3 text-xl"></i> Fibra Óptica 100%</li>
+            <li class="flex items-center text-gray-300"><i
+                class="ph-bold ph-arrows-down-up text-brand-primary mr-3 text-xl"></i> Velocidad simétrica</li>
+            <li class="flex items-center text-gray-300"><i
+                class="ph-bold ph-download-simple text-brand-primary mr-3 text-xl"></i> Descargas ilimitadas</li>
+            <li class="flex items-center text-gray-300"><i
+                class="ph-bold ph-users-three text-brand-primary mr-3 text-xl"></i> Múltiples conexiones</li>
+          </ul>
+          <a href="https://wa.me/51933046750?text=Hola,%20quiero%20el%20Plan%20Familiar%20de%20250%20Mbps"
+            target="_blank" class="btn-outline-glow block w-full text-center py-3 rounded-xl font-bold">Solicitar</a>
+        </div>
+
+        <!-- Tarjeta 2 (Duo Plan - Featured) -->
+        <div
+          class="glass-card rounded-3xl p-8 flex flex-col relative z-20 bg-brand-purple/20 border-2 border-brand-cyan shadow-[0_0_30px_rgba(0,242,254,0.2)] transform lg:scale-110">
+          <div class="absolute inset-0 bg-gradient-to-b from-brand-cyan/5 to-transparent rounded-3xl z-[-1]"></div>
+          <div
+            class="absolute top-0 right-0 bg-brand-cyan text-brand-dark text-xs font-extrabold px-4 py-2 rounded-bl-xl rounded-tr-2xl uppercase tracking-wider">
+            Recomendado</div>
+          <div class="mb-6">
+            <h4 class="text-brand-cyan font-semibold mb-2 uppercase tracking-wide">Duo Internet + TV</h4>
+            <div class="flex items-end">
+              <span class="text-5xl font-black text-white text-glow-secondary">Dúo</span>
+            </div>
+            <div class="mt-4 text-4xl font-bold text-white">S/ 90.00 <span
+                class="text-sm text-gray-400 font-normal">/mes</span></div>
+          </div>
+          <ul class="space-y-4 mb-8 flex-1">
+            <li class="flex items-start text-white"><i
+                class="ph-fill ph-rocket-launch text-brand-cyan mr-3 text-2xl mt-0.5"></i>
+              <div><span class="font-bold">200 Mbps</span><br><span class="text-xs text-gray-300">Fibra Óptica
+                  Simétrica</span></div>
+            </li>
+            <li class="flex items-start text-white"><i
+                class="ph-fill ph-television-simple text-brand-cyan mr-3 text-2xl mt-0.5"></i>
+              <div><span class="font-bold">+100 Canales TV</span><br><span class="text-xs text-gray-300">Resolución Full
+                  HD</span></div>
+            </li>
+          </ul>
+
+          <div class="mt-0 mb-4 flex flex-col">
+            <span class="text-[0.65rem] text-brand-cyan uppercase tracking-widest font-bold mb-2">Canales
+              Incluidos</span>
+            <div
+              class="flex items-center gap-2 bg-black/40 p-2.5 rounded-xl border border-brand-cyan/20 justify-between relative overflow-hidden group/channels hover:border-brand-cyan/50 transition-colors">
+              <img src="img/logo-liga1max.svg" alt="Liga 1 Max"
+                class="h-5 object-contain opacity-90 transition-all hover:scale-110">
+              <img src="img/Disney_Channel_logo.png" alt="Disney"
+                class="h-5 object-contain opacity-90 transition-all hover:scale-110 border-l border-white/10 pl-2">
+              <img src="img/espn-logo.png" alt="ESPN"
+                class="h-4 object-contain opacity-90 transition-all hover:scale-110 border-l border-white/10 pl-2">
+              <img src="img/discovery-channel-logo.png" alt="Discovery"
+                class="h-4 object-contain opacity-90 transition-all hover:scale-110 border-l border-white/10 pl-2">
+            </div>
+            <button type="button" onclick="document.getElementById('modal-canales').classList.remove('hidden')"
+              class="bg-transparent text-gray-400 hover:text-brand-cyan transition-colors text-xs font-semibold mt-3 w-full text-center flex justify-center items-center group focus:outline-none">
+              Ver todos los canales <i
+                class="ph-bold ph-arrow-right ml-1 group-hover:translate-x-1 transition-transform"></i>
+            </button>
+          </div>
+          <a href="https://wa.me/51933046750?text=Hola,%20quiero%20el%20Plan%20Duo%20Internet%20y%20TV%20de%20200%20Mbps"
+            target="_blank"
+            class="bg-brand-cyan hover:bg-[#00d2dd] text-brand-dark transition-colors block w-full text-center py-4 rounded-xl font-extrabold text-lg shadow-[0_0_20px_rgba(0,242,254,0.4)]">Contratar
+            Dúo</a>
+        </div>
+
+        <!-- Tarjeta 4 (300 Mbps) -->
+        <div class="glass-card rounded-3xl p-8 flex flex-col relative top-0 hover:-top-2 transition-all duration-300">
+          <div class="mb-6">
+            <h4 class="text-gray-400 font-semibold mb-2 uppercase tracking-wide">Pro</h4>
+            <div class="flex items-end">
+              <span class="text-5xl font-black text-white">300</span>
+              <span class="text-xl text-gray-400 ml-2 mb-1">Mbps</span>
+            </div>
+            <div class="mt-4 text-3xl font-bold text-brand-primary">S/ 100.00 <span
+                class="text-sm text-gray-500 font-normal">/mes</span></div>
+          </div>
+          <ul class="space-y-4 mb-8 flex-1">
+            <li class="flex items-center text-gray-300"><i
+                class="ph-bold ph-wifi-high text-brand-primary mr-3 text-xl"></i> Fibra Óptica 100%</li>
+            <li class="flex items-center text-gray-300"><i
+                class="ph-bold ph-arrows-down-up text-brand-primary mr-3 text-xl"></i> Velocidad simétrica</li>
+            <li class="flex items-center text-gray-300"><i
+                class="ph-bold ph-download-simple text-brand-primary mr-3 text-xl"></i> Descargas ilimitadas</li>
+            <li class="flex items-center text-gray-300"><i
+                class="ph-bold ph-users-three text-brand-primary mr-3 text-xl"></i> Múltiples conexiones</li>
+          </ul>
+          <a href="https://wa.me/51933046750?text=Hola,%20quiero%20el%20Plan%20Pro%20de%20300%20Mbps" target="_blank"
+            class="btn-outline-glow block w-full text-center py-3 rounded-xl font-bold">Solicitar</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sección de Cobertura -->
+  <section class="py-12 relative z-10 border-t border-white/5 bg-black/20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h3 class="text-xl md:text-2xl font-bold mb-6 text-gray-300 flex items-center justify-center">
+        <i class="ph-fill ph-map-pin text-brand-primary mr-3"></i> Cobertura Garantizada
+      </h3>
+      <div class="flex flex-wrap justify-center gap-3">
+        <span
+          class="px-5 py-2 rounded-full border border-brand-primary/30 bg-brand-primary/5 text-white font-medium hover:bg-brand-primary/20 transition-colors uppercase tracking-wider text-sm">URIPA</span>
+        <span
+          class="px-5 py-2 rounded-full border border-brand-cyan/30 bg-brand-cyan/5 text-white font-medium hover:bg-brand-cyan/20 transition-colors uppercase tracking-wider text-sm">CHINCHEROS</span>
+        <span
+          class="px-5 py-2 rounded-full border border-brand-primary/30 bg-brand-primary/5 text-white font-medium hover:bg-brand-primary/20 transition-colors uppercase tracking-wider text-sm">RÍO
+          BLANCO</span>
+        <span
+          class="px-5 py-2 rounded-full border border-brand-cyan/30 bg-brand-cyan/5 text-white font-medium hover:bg-brand-cyan/20 transition-colors uppercase tracking-wider text-sm">TEJAHUASI</span>
+        <span
+          class="px-5 py-2 rounded-full border border-brand-primary/30 bg-brand-primary/5 text-white font-medium hover:bg-brand-primary/20 transition-colors uppercase tracking-wider text-sm">EL
+          DORADO</span>
+        <span
+          class="px-5 py-2 rounded-full border border-brand-cyan/30 bg-brand-cyan/5 text-white font-medium hover:bg-brand-cyan/20 transition-colors uppercase tracking-wider text-sm">CHUPARO</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sección de Canales de Pago -->
+  <section id="canales-pagos" class="py-20 relative">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div
+        class="bg-gradient-to-r from-brand-purple/40 to-brand-primary/10 rounded-3xl p-10 md:p-16 border border-white/5 relative overflow-hidden">
+
+        <!-- Lógica de Decoración -->
+        <div
+          class="absolute -top-20 -right-20 w-64 h-64 bg-brand-primary/20 rounded-full blur-3xl mix-blend-screen pointer-events-none">
+        </div>
+        <div
+          class="absolute -bottom-20 -left-20 w-64 h-64 bg-brand-cyan/20 rounded-full blur-3xl mix-blend-screen pointer-events-none">
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center relative z-10">
+          <div>
+            <h2 class="text-3xl md:text-5xl font-extrabold mb-6">Nuestros canales de pago</h2>
+            <p class="text-lg text-gray-300 mb-8">Nuestros canales de pago están disponibles 24/7. Cancela tu servicio
+              mediante nuestras cuentas oficiales de manera segura y rápida.</p>
+          </div>
+
+          <div class="grid grid-cols-2 gap-4">
+            <!-- Tarjeta Yape -->
+            <div
+              class="glass bg-white/5 rounded-2xl p-6 flex flex-col items-center justify-center hover:-translate-y-2 transition-transform cursor-pointer group">
+              <img src="img/yape-logo.svg" alt="Yape"
+                class="h-16 mb-4 group-hover:scale-110 drop-shadow-[0_0_15px_rgba(116,35,132,0.5)] transition object-contain">
+            </div>
+
+            <!-- Tarjeta BCP -->
+            <div
+              class="glass bg-white/5 rounded-2xl p-6 flex flex-col items-center justify-center hover:-translate-y-2 transition-transform cursor-pointer group">
+              <img src="img/bcp-logo.svg" alt="BCP"
+                class="h-16 mb-4 group-hover:scale-110 drop-shadow-[0_0_15px_rgba(255,107,0,0.5)] transition object-contain">
+            </div>
+
+            <!-- Banco de la Nación -->
+            <div
+              class="glass bg-white/5 rounded-2xl p-6 flex flex-col items-center justify-center hover:-translate-y-2 transition-transform cursor-pointer group col-span-2 sm:col-span-1">
+              <img src="img/banco-nacion-logo.png" alt="Banco de la Nación"
+                class="h-16 mb-4 group-hover:scale-110 drop-shadow-[0_0_15px_rgba(216,30,30,0.5)] transition object-contain">
+            </div>
+
+            <!-- Soporte -->
+            <a href="https://wa.me/51933046750?text=Hola,%20Quiero%20pagar%20mi%20plan" target="_blank"
+              class="glass bg-white/5 rounded-2xl p-6 flex flex-col items-center justify-center border border-brand-cyan/20 cursor-pointer hover:bg-brand-cyan/10 transition group col-span-2 sm:col-span-1">
+              <div
+                class="w-12 h-12 bg-transparent border-2 border-brand-cyan rounded-full flex items-center justify-center mb-2 mx-auto text-brand-cyan group-hover:shadow-[0_0_15px_rgba(0,242,254,0.5)] transition text-glow-secondary">
+                <i class="ph-bold ph-whatsapp-logo text-2xl"></i>
+              </div>
+              <span
+                class="font-bold text-sm text-center text-white group-hover:text-brand-cyan transition-colors">Contactar
+                Pagos</span>
+            </a>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Ubícanos Section -->
+  <section id="ubicanos" class="py-24 relative">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-col md:flex-row justify-between items-end mb-12">
+        <div class="max-w-2xl">
+          <h2 class="text-brand-cyan font-bold tracking-wider uppercase text-sm mb-2 text-glow-secondary">Red de
+            Oficinas</h2>
+          <h3 class="text-4xl md:text-5xl font-black mb-4">Encuéntranos cerca a ti</h3>
+          <p class="text-gray-400 text-lg">Visita nuestras agencias para contratar servicios, realizar pagos o solicitar
+            soporte técnico presencial.</p>
+        </div>
+
+        <!-- Botones de Selección -->
+        <div class="flex mt-8 md:mt-0 glass p-2 rounded-xl backdrop-blur-xl border border-white/10">
+          <button id="btn-map-uripa"
+            class="btn-map-toggle active px-6 py-3 rounded-lg font-bold text-sm transition-all focus:outline-none">
+            Sede URIPA
+          </button>
+          <button id="btn-map-chincheros"
+            class="btn-map-toggle px-6 py-3 rounded-lg font-bold text-sm text-gray-400 hover:text-white transition-all focus:outline-none">
+            Sede CHINCHEROS
+          </button>
+        </div>
+      </div>
+
+      <!-- Contenedor del Mapa -->
+      <div class="map-container glass rounded-3xl p-4 md:p-6 relative overflow-hidden h-[500px]">
+        <iframe id="map-iframe" class="transition-opacity duration-300"
+          src="https://maps.google.com/maps?q=-13.533265,-73.678339&hl=es&z=15&output=embed" width="100%" height="100%"
+          style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+        <!-- Decoración -->
+        <div
+          class="absolute bottom-10 left-10 glass-card p-6 rounded-2xl max-w-sm border-l-4 border-l-brand-primary hidden md:block">
+          <h4 class="font-bold text-xl mb-1 text-white">Oficina Principal</h4>
+          <p class="text-gray-400 text-sm mb-4">Atención de Lunes a Sábado de 8AM a 6PM.</p>
+          <div class="flex items-center text-brand-primary">
+            <i class="ph-fill ph-check-circle mr-2"></i>
+            <span class="font-semibold text-sm">Operativos Ahora</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pie de PÃ¡gina -->
+  <footer class="bg-[#0c0314] py-16 border-t border-white/5 relative z-10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
+
+        <!-- Marca -->
+        <div>
+          <a href="#" class="text-3xl font-black italic tracking-tighter text-white block mb-4">
+            GO<span class="text-brand-primary">NET</span>
+          </a>
+          <p class="text-gray-400 text-sm mb-6 leading-relaxed">Conectando hogares y empresas con la red de fibra óptica
+            más estable y rápida de la región. El futuro a tu alcance.</p>
+          <div class="flex space-x-4">
+            <a href="#"
+              class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-brand-primary hover:text-white transition group"><i
+                class="ph-fill ph-facebook-logo text-xl text-gray-400 group-hover:text-white"></i></a>
+            <a href="#"
+              class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-brand-primary hover:text-white transition group"><i
+                class="ph-fill ph-instagram-logo text-xl text-gray-400 group-hover:text-white"></i></a>
+            <a href="#"
+              class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-brand-primary hover:text-white transition group"><i
+                class="ph-fill ph-tiktok-logo text-xl text-gray-400 group-hover:text-white"></i></a>
+          </div>
+        </div>
+
+        <!-- Enlaces -->
+        <div>
+          <h4 class="font-bold text-lg mb-6">Enlaces</h4>
+          <ul class="space-y-4 text-gray-400 text-sm">
+            <li><a href="#" class="hover:text-brand-primary transition">Inicio</a></li>
+            <li><a href="nosotros/index.html" class="hover:text-brand-primary transition">Nosotros</a></li>
+            <li><a href="#planes" class="hover:text-brand-primary transition">Planes Hogar</a></li>
+            <li><a href="empresas/index.html"
+                class="hover:text-brand-primary transition font-bold text-brand-cyan">Planes Empresas</a></li>
+          </ul>
+        </div>
+
+        <!-- Soporte -->
+        <div>
+          <h4 class="font-bold text-lg mb-6">Soporte</h4>
+          <ul class="space-y-4 text-gray-400 text-sm">
+            <li><a href="#canales-pagos" class="hover:text-brand-primary transition">Cómo Pagar</a></li>
+            <li><a href="https://www.speedtest.net/es" class="hover:text-brand-primary transition">Test de Velocidad</a>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Contacto -->
+        <div>
+          <h4 class="font-bold text-lg mb-6">Contáctanos</h4>
+          <ul class="space-y-4 text-gray-400 text-sm">
+            <li class="flex flex-col">
+              <span class="text-xs uppercase tracking-wider text-gray-600 mb-1">Ventas y Asesoría</span>
+              <a href="tel:933046750" class="text-xl font-bold text-white hover:text-brand-cyan transition">933046750 -
+                947615656</a>
+            </li>
+            <li class="flex flex-col mt-4">
+              <span class="text-xs uppercase tracking-wider text-gray-600 mb-1">Soporte Técnico</span>
+              <a href="tel:933046750"
+                class="text-xl font-bold text-white hover:text-brand-cyan transition">975896161</a>
+            </li>
+            <li class="flex items-center text-gray-400 mt-4">
+              <i class="ph-fill ph-envelope-simple mr-2"></i> corp.gonet@gmail.com
+            </li>
+          </ul>
+        </div>
+
+      </div>
+
+      <div
+        class="border-t border-white/5 pt-8 flex flex-col md:flex-row justify-between items-center text-xs text-gray-500">
+        <p>&copy; 2026 WairaTvGo Telecomunicaciones. Todos los derechos reservados.</p>
+        <div class="flex space-x-4 mt-4 md:mt-0">
+          <a href="#" class="hover:text-gray-300">Términos y Condiciones</a>
+          <a href="#" class="hover:text-gray-300">Políticas de Privacidad</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Botón Flotante y Modal de WhatsApp -->
+  <div class="fixed bottom-6 right-6 z-50 flex flex-col items-end">
+    <!-- Modal de Canales -->
+    <div id="modal-canales" class="fixed inset-0 z-[99999] hidden">
+      <!-- Overlay -->
+      <div class="absolute inset-0 bg-black/80 backdrop-blur-sm transition-opacity"
+        onclick="document.getElementById('modal-canales').classList.add('hidden')"></div>
+      <!-- Contenedor del Modal -->
+      <div
+        class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[95%] max-w-5xl max-h-[90vh] flex flex-col border border-brand-cyan/30 shadow-[0_0_50px_rgba(0,242,254,0.15)] rounded-3xl bg-[#0a0410]/95 overflow-hidden animate-scale-up">
+
+        <!-- Header -->
+        <div
+          class="flex justify-between items-center p-5 md:p-6 border-b border-white/10 shrink-0 bg-gradient-to-r from-transparent to-brand-cyan/5">
+          <div>
+            <h3 class="text-xl md:text-2xl font-black text-white flex items-center">
+              <i class="ph-fill ph-television-simple text-brand-cyan mr-3 md:text-3xl text-2xl"></i>
+              Parrilla de Canales
+              <span
+                class="bg-brand-primary/20 text-brand-primary text-[10px] md:text-xs ml-3 px-3 py-1 rounded-full border border-brand-primary/30 uppercase tracking-wider hidden sm:inline-block">Plan
+                Dúo</span>
+            </h3>
+            <p class="text-gray-400 text-xs md:text-sm mt-1 hidden md:block">Más de 100 canales con la mejor
+              programación en Full HD.</p>
+          </div>
+          <button onclick="document.getElementById('modal-canales').classList.add('hidden')"
+            class="text-gray-400 hover:text-white bg-white/5 hover:bg-white/10 p-2 rounded-full transition-colors focus:outline-none flex-shrink-0">
+            <i class="ph-bold ph-x text-xl"></i>
+          </button>
+        </div>
+
+        <!-- Body -->
+        <div class="flex flex-col md:flex-row flex-1 overflow-hidden">
+          <!-- Tabs Laterales (MD+) / Superiores (Mobile) -->
+          <div
+            class="w-full md:w-64 bg-black/40 border-r border-white/5 overflow-x-auto md:overflow-y-auto shrink-0 flex md:flex-col p-4 gap-2 custom-scrollbar">
+            <button onclick="showChannelTab(event, 'tab-nacionales')"
+              class="channel-tab-link text-left whitespace-nowrap md:whitespace-normal px-4 py-3 rounded-xl border active-tab border-brand-primary bg-brand-purple/40 text-white font-bold transition-all flex items-center group"
+              type="button">
+              <i class="ph-fill ph-flag mr-3 text-brand-primary text-lg group-hover:scale-110 transition-transform"></i>
+              Nacionales
+            </button>
+            <button onclick="showChannelTab(event, 'tab-series')"
+              class="channel-tab-link text-left whitespace-nowrap md:whitespace-normal px-4 py-3 rounded-xl border border-transparent hover:bg-white/5 text-gray-400 hover:text-white font-medium transition-all flex items-center group"
+              type="button">
+              <i
+                class="ph-fill ph-film-strip mr-3 text-brand-cyan text-lg group-hover:scale-110 transition-transform"></i>
+              Series
+            </button>
+            <button onclick="showChannelTab(event, 'tab-infantil')"
+              class="channel-tab-link text-left whitespace-nowrap md:whitespace-normal px-4 py-3 rounded-xl border border-transparent hover:bg-white/5 text-gray-400 hover:text-white font-medium transition-all flex items-center group"
+              type="button">
+              <i class="ph-fill ph-baby mr-3 text-pink-500 text-lg group-hover:scale-110 transition-transform"></i>
+              Infantil
+            </button>
+            <button onclick="showChannelTab(event, 'tab-peliculas')"
+              class="channel-tab-link text-left whitespace-nowrap md:whitespace-normal px-4 py-3 rounded-xl border border-transparent hover:bg-white/5 text-gray-400 hover:text-white font-medium transition-all flex items-center group"
+              type="button">
+              <i class="ph-fill ph-popcorn mr-3 text-yellow-500 text-lg group-hover:scale-110 transition-transform"></i>
+              Peliculas
+            </button>
+            <button onclick="showChannelTab(event, 'tab-deportes')"
+              class="channel-tab-link text-left whitespace-nowrap md:whitespace-normal px-4 py-3 rounded-xl border border-transparent hover:bg-white/5 text-gray-400 hover:text-white font-medium transition-all flex items-center group"
+              type="button">
+              <i
+                class="ph-fill ph-soccer-ball mr-3 text-green-500 text-lg group-hover:scale-110 transition-transform"></i>
+              Deportes
+            </button>
+            <button onclick="showChannelTab(event, 'tab-factuales')"
+              class="channel-tab-link text-left whitespace-nowrap md:whitespace-normal px-4 py-3 rounded-xl border border-transparent hover:bg-white/5 text-gray-400 hover:text-white font-medium transition-all flex items-center group"
+              type="button">
+              <i class="ph-fill ph-planet mr-3 text-orange-400 text-lg group-hover:scale-110 transition-transform"></i>
+              Factuales
+            </button>
+            <button onclick="showChannelTab(event, 'tab-variados')"
+              class="channel-tab-link text-left whitespace-nowrap md:whitespace-normal px-4 py-3 rounded-xl border border-transparent hover:bg-white/5 text-gray-400 hover:text-white font-medium transition-all flex items-center group"
+              type="button">
+              <i class="ph-fill ph-star mr-3 text-purple-400 text-lg group-hover:scale-110 transition-transform"></i>
+              Variados
+            </button>
+            <button onclick="showChannelTab(event, 'tab-documentales')"
+              class="channel-tab-link text-left whitespace-nowrap md:whitespace-normal px-4 py-3 rounded-xl border border-transparent hover:bg-white/5 text-gray-400 hover:text-white font-medium transition-all flex items-center group"
+              type="button">
+              <i
+                class="ph-fill ph-book-open-text mr-3 text-blue-400 text-lg group-hover:scale-110 transition-transform"></i>
+              Documentales
+            </button>
+          </div>
+
+          <!-- Contenidos de los Tabs -->
+          <div
+            class="flex-1 p-4 md:p-6 overflow-y-auto custom-scrollbar bg-gradient-to-br from-transparent to-brand-primary/5">
+            <div id="tab-nacionales"
+              class="channel-tab-content grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 animate-fade-in">
+              <div
+                class="bg-white/5 border border-white/10 rounded-xl p-4 flex flex-col items-center justify-center hover:bg-white/10 hover:border-brand-primary/50 hover:shadow-[0_0_15px_rgba(236,102,8,0.3)] transition-all cursor-default group text-center h-20">
+                <span
+                  class="font-bold text-gray-300 group-hover:text-white group-hover:scale-105 transition-all text-sm">America</span>
+              </div>
+              <div
+                class="bg-white/5 border border-white/10 rounded-xl p-4 flex flex-col items-center justify-center hover:bg-white/10 hover:border-brand-primary/50 hover:shadow-[0_0_15px_rgba(236,102,8,0.3)] transition-all cursor-default group text-center h-20">
+                <span
+                  class="font-bold text-gray-300 group-hover:text-white group-hover:scale-105 transition-all text-sm">Frecuencia
+                  Latina</span>
+              </div>
+              <div
+                class="bg-white/5 border border-white/10 rounded-xl p-4 flex flex-col items-center justify-center hover:bg-white/10 hover:border-brand-primary/50 hover:shadow-[0_0_15px_rgba(236,102,8,0.3)] transition-all cursor-default group text-center h-20">
+                <span
+                  class="font-bold text-gray-300 group-hover:text-white group-hover:scale-105 transition-all text-sm">Panamericana</span>
+              </div>
+              <div
+                class="bg-white/5 border border-white/10 rounded-xl p-4 flex flex-col items-center justify-center hover:bg-white/10 hover:border-brand-primary/50 hover:shadow-[0_0_15px_rgba(236,102,8,0.3)] transition-all cursor-default group text-center h-20">
+                <span
+                  class="font-bold text-gray-300 group-hover:text-white group-hover:scale-105 transition-all text-sm">TV
+                  Peru</span>
+              </div>
+              <div
+                class="bg-white/5 border border-white/10 rounded-xl p-4 flex flex-col items-center justify-center hover:bg-white/10 hover:border-brand-primary/50 hover:shadow-[0_0_15px_rgba(236,102,8,0.3)] transition-all cursor-default group text-center h-20">
+                <span
+                  class="font-bold text-gray-300 group-hover:text-white group-hover:scale-105 transition-all text-sm">ATV</span>
+              </div>
+              <div
+                class="bg-white/5 border border-white/10 rounded-xl p-4 flex flex-col items-center justify-center hover:bg-white/10 hover:border-brand-primary/50 hover:shadow-[0_0_15px_rgba(236,102,8,0.3)] transition-all cursor-default group text-center h-20">
+                <span
+                  class="font-bold text-gray-300 group-hover:text-white group-hover:scale-105 transition-all text-sm">Zona
+                  Latina</span>
+              </div>
+              <div
+                class="bg-white/5 border border-white/10 rounded-xl p-4 flex flex-col items-center justify-center hover:bg-white/10 hover:border-brand-primary/50 hover:shadow-[0_0_15px_rgba(236,102,8,0.3)] transition-all cursor-default group text-center h-20">
+                <span
+                  class="font-bold text-gray-300 group-hover:text-white group-hover:scale-105 transition-all text-sm">ATV+</span>
+              </div>
+              <div
+                class="bg-white/5 border border-white/10 rounded-xl p-4 flex flex-col items-center justify-center hover:bg-white/10 hover:border-brand-primary/50 hover:shadow-[0_0_15px_rgba(236,102,8,0.3)] transition-all cursor-default group text-center h-20">
+                <span
+                  class="font-bold text-gray-300 group-hover:text-white group-hover:scale-105 transition-all text-sm">Willax</span>
+              </div>
+            </div>
+            <div id="tab-series"
+              class="channel-tab-content hidden grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 animate-fade-in">
+              <div
+                class="bg-white/5 border border-white/10 rounded-xl p-4 flex flex-col items-center justify-center hover:bg-white/10 hover:border-brand-primary/50 hover:shadow-[0_0_15px_rgba(236,102,8,0.3)] transition-all cursor-default group text-center h-20">
+                <span
+                  class="font-bold text-gray-300 group-hover:text-white group-hover:scale-105 transition-all text-sm">MTV</span>
+              </div>
+              <div
+                class="bg-white/5 border border-white/10 rounded-xl p-4 flex flex-col items-center justify-center hover:bg-white/10 hover:border-brand-primary/50 hover:shadow-[0_0_15px_rgba(236,102,8,0.3)] transition-all cursor-default group text-center h-20">
+                <span
+                  class="font-bold text-gray-300 group-hover:text-white group-hover:scale-105 transition-all text-sm">A&E</span>
+              </div>
+              <div
+                class="bg-white/5 border border-white/10 rounded-xl p-4 flex flex-col items-center justify-center hover:bg-white/10 hover:border-brand-primary/50 hover:shadow-[0_0_15px_rgba(236,102,8,0.3)] transition-all cursor-default group text-center h-20">
+                <span
+                  class="font-bold text-gray-300 group-hover:text-white group-hover:scale-105 transition-all text-sm">Syfy</span>
+              </div>
+              <div
+                class="bg-white/5 border border-white/10 rounded-xl p-4 flex flex-col items-center justify-center hover:bg-white/10 hover:border-brand-primary/50 hover:shadow-[0_0_15px_rgba(236,102,8,0.3)] transition-all cursor-default group text-center h-20">
+                <span
+                  class="font-bold text-gray-300 group-hover:text-white group-hover:scale-105 transition-all text-sm">Warner</span>
+              </div>
+              <div
+                class="bg-white/5 border border-white/10 rounded-xl p-4 flex flex-col items-center justify-center hover:bg-white/10 hover:border-brand-primary/50 hover:shadow-[0_0_15px_rgba(236,102,8,0.3)] transition-all cursor-default group text-center h-20">
+                <span
+                  class="font-bold text-gray-300 group-hover:text-white group-hover:scale-105 transition-all text-sm">TNT</span>
+              </div>
+              <div
+                class="bg-white/5 border border-white/10 rounded-xl p-4 flex flex-col items-center justify-center hover:bg-white/10 hover:border-brand-primary/50 hover:shadow-[0_0_15px_rgba(236,102,8,0.3)] transition-all cursor-default group text-center h-20">
+                <span
+                  class="font-bold text-gray-300 group-hover:text-white group-hover:scale-105 transition-all text-sm">Lifetime</span>
+              </div>
+              <div
+                class="bg-white/5 border border-white/10 rounded-xl p-4 flex flex-col items-center justify-center hover:bg-white/10 hover:border-brand-primary/50 hover:shadow-[0_0_15px_rgba(236,102,8,0.3)] transition-all cursor-default group text-center h-20">
+                <span
+                  class="font-bold text-gray-300 group-hover:text-white group-hover:scale-105 transition-all text-sm">TBS</span>
+              </div>
+              <div
+                class="bg-white/5 border border-white/10 rounded-xl p-4 flex flex-col items-center justify-center hover:bg-white/10 hover:border-brand-primary/50 hover:shadow-[0_0_15px_rgba(236,102,8,0.3)] transition-all cursor-default group text-center h-20">
+                <span
+                  class="font-bold text-gray-300 group-hover:text-white group-hover:scale-105 transition-all text-sm">AXN</span>
+              </div>
+            </div>
+            <div id="tab-infantil"
+              class="channel-tab-content hidden grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 animate-fade-in">
+              <div
+                class="bg-white/5 border border-white/10 rounded-xl p-4 flex flex-col items-center justify-center hover:bg-white/10 hover:border-brand-primary/50 hover:shadow-[0_0_15px_rgba(236,102,8,0.3)] transition-all cursor-default group text-center h-20">
+                <span
+                  class="font-bold text-gray-300 group-hover:text-white group-hover:scale-105 transition-all text-sm">Cartoon
+                  Network</span>
+              </div>
+              <div
+                class="bg-white/5 border border-white/10 rounded-xl p-4 flex flex-col items-center justify-center hover:bg-white/10 hover:border-brand-primary/50 hover:shadow-[0_0_15px_rgba(236,102,8,0.3)] transition-all cursor-default group text-center h-20">
+                <span
+                  class="font-bold text-gray-300 group-hover:text-white group-hover:scale-105 transition-all text-sm">Disney
+                  Channel</span>
+              </div>
+              <div
+                class="bg-white/5 border border-white/10 rounded-xl p-4 flex flex-col items-center justify-center hover:bg-white/10 hover:border-brand-primary/50 hover:shadow-[0_0_15px_rgba(236,102,8,0.3)] transition-all cursor-default group text-center h-20">
+                <span
+                  class="font-bold text-gray-300 group-hover:text-white group-hover:scale-105 transition-all text-sm">Disney
+                  Jr</span>
+              </div>
+              <div
+                class="bg-white/5 border border-white/10 rounded-xl p-4 flex flex-col items-center justify-center hover:bg-white/10 hover:border-brand-primary/50 hover:shadow-[0_0_15px_rgba(236,102,8,0.3)] transition-all cursor-default group text-center h-20">
+                <span
+                  class="font-bold text-gray-300 group-hover:text-white group-hover:scale-105 transition-all text-sm">BabyFirst</span>
+              </div>
+              <div
+                class="bg-white/5 border border-white/10 rounded-xl p-4 flex flex-col items-center justify-center hover:bg-white/10 hover:border-brand-primary/50 hover:shadow-[0_0_15px_rgba(236,102,8,0.3)] transition-all cursor-default group text-center h-20">
+                <span
+                  class="font-bold text-gray-300 group-hover:text-white group-hover:scale-105 transition-all text-sm">Nick
+                  Jr</span>
+              </div>
+              <div
+                class="bg-white/5 border border-white/10 rounded-xl p-4 flex flex-col items-center justify-center hover:bg-white/10 hover:border-brand-primary/50 hover:shadow-[0_0_15px_rgba(236,102,8,0.3)] transition-all cursor-default group text-center h-20">
+                <span
+                  class="font-bold text-gray-300 group-hover:text-white group-hover:scale-105 transition-all text-sm">Discovery
+                  Kids</span>
+              </div>
+              <div
+                class="bg-white/5 border border-white/10 rounded-xl p-4 flex flex-col items-center justify-center hover:bg-white/10 hover:border-brand-primary/50 hover:shadow-[0_0_15px_rgba(236,102,8,0.3)] transition-all cursor-default group text-center h-20">
+                <span
+                  class="font-bold text-gray-300 group-hover:text-white group-hover:scale-105 transition-all text-sm">Nickelodeon</span>
+              </div>
+            </div>
+            <div id="tab-peliculas"
+              class="channel-tab-content hidden grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 animate-fade-in">
+              <div
+                class="bg-white/5 border border-white/10 rounded-xl p-4 flex flex-col items-center justify-center hover:bg-white/10 hover:border-brand-primary/50 hover:shadow-[0_0_15px_rgba(236,102,8,0.3)] transition-all cursor-default group text-center h-20">
+                <span
+                  class="font-bold text-gray-300 group-hover:text-white group-hover:scale-105 transition-all text-sm">Universal
+                  Cinemax</span>
+              </div>
+              <div
+                class="bg-white/5 border border-white/10 rounded-xl p-4 flex flex-col items-center justify-center hover:bg-white/10 hover:border-brand-primary/50 hover:shadow-[0_0_15px_rgba(236,102,8,0.3)] transition-all cursor-default group text-center h-20">
+                <span
+                  class="font-bold text-gray-300 group-hover:text-white group-hover:scale-105 transition-all text-sm">FX
+                  Movies</span>
+              </div>
+              <div
+                class="bg-white/5 border border-white/10 rounded-xl p-4 flex flex-col items-center justify-center hover:bg-white/10 hover:border-brand-primary/50 hover:shadow-[0_0_15px_rgba(236,102,8,0.3)] transition-all cursor-default group text-center h-20">
+                <span
+                  class="font-bold text-gray-300 group-hover:text-white group-hover:scale-105 transition-all text-sm">HBO
+                  2</span>
+              </div>
+              <div
+                class="bg-white/5 border border-white/10 rounded-xl p-4 flex flex-col items-center justify-center hover:bg-white/10 hover:border-brand-primary/50 hover:shadow-[0_0_15px_rgba(236,102,8,0.3)] transition-all cursor-default group text-center h-20">
+                <span
+                  class="font-bold text-gray-300 group-hover:text-white group-hover:scale-105 transition-all text-sm">HBO
+                  Family</span>
+              </div>
+              <div
+                class="bg-white/5 border border-white/10 rounded-xl p-4 flex flex-col items-center justify-center hover:bg-white/10 hover:border-brand-primary/50 hover:shadow-[0_0_15px_rgba(236,102,8,0.3)] transition-all cursor-default group text-center h-20">
+                <span
+                  class="font-bold text-gray-300 group-hover:text-white group-hover:scale-105 transition-all text-sm">HBO
+                  Plus</span>
+              </div>
+              <div
+                class="bg-white/5 border border-white/10 rounded-xl p-4 flex flex-col items-center justify-center hover:bg-white/10 hover:border-brand-primary/50 hover:shadow-[0_0_15px_rgba(236,102,8,0.3)] transition-all cursor-default group text-center h-20">
+                <span
+                  class="font-bold text-gray-300 group-hover:text-white group-hover:scale-105 transition-all text-sm">Space</span>
+              </div>
+              <div
+                class="bg-white/5 border border-white/10 rounded-xl p-4 flex flex-col items-center justify-center hover:bg-white/10 hover:border-brand-primary/50 hover:shadow-[0_0_15px_rgba(236,102,8,0.3)] transition-all cursor-default group text-center h-20">
+                <span
+                  class="font-bold text-gray-300 group-hover:text-white group-hover:scale-105 transition-all text-sm">Universal</span>
+              </div>
+              <div
+                class="bg-white/5 border border-white/10 rounded-xl p-4 flex flex-col items-center justify-center hover:bg-white/10 hover:border-brand-primary/50 hover:shadow-[0_0_15px_rgba(236,102,8,0.3)] transition-all cursor-default group text-center h-20">
+                <span
+                  class="font-bold text-gray-300 group-hover:text-white group-hover:scale-105 transition-all text-sm">TCM</span>
+              </div>
+              <div
+                class="bg-white/5 border border-white/10 rounded-xl p-4 flex flex-col items-center justify-center hover:bg-white/10 hover:border-brand-primary/50 hover:shadow-[0_0_15px_rgba(236,102,8,0.3)] transition-all cursor-default group text-center h-20">
+                <span
+                  class="font-bold text-gray-300 group-hover:text-white group-hover:scale-105 transition-all text-sm">Max
+                  Prime</span>
+              </div>
+              <div
+                class="bg-white/5 border border-white/10 rounded-xl p-4 flex flex-col items-center justify-center hover:bg-white/10 hover:border-brand-primary/50 hover:shadow-[0_0_15px_rgba(236,102,8,0.3)] transition-all cursor-default group text-center h-20">
+                <span
+                  class="font-bold text-gray-300 group-hover:text-white group-hover:scale-105 transition-all text-sm">Cinecanal</span>
+              </div>
+              <div
+                class="bg-white/5 border border-white/10 rounded-xl p-4 flex flex-col items-center justify-center hover:bg-white/10 hover:border-brand-primary/50 hover:shadow-[0_0_15px_rgba(236,102,8,0.3)] transition-all cursor-default group text-center h-20">
+                <span
+                  class="font-bold text-gray-300 group-hover:text-white group-hover:scale-105 transition-all text-sm">Golden</span>
+              </div>
+              <div
+                class="bg-white/5 border border-white/10 rounded-xl p-4 flex flex-col items-center justify-center hover:bg-white/10 hover:border-brand-primary/50 hover:shadow-[0_0_15px_rgba(236,102,8,0.3)] transition-all cursor-default group text-center h-20">
+                <span
+                  class="font-bold text-gray-300 group-hover:text-white group-hover:scale-105 transition-all text-sm">Studio
+                  Universal</span>
+              </div>
+              <div
+                class="bg-white/5 border border-white/10 rounded-xl p-4 flex flex-col items-center justify-center hover:bg-white/10 hover:border-brand-primary/50 hover:shadow-[0_0_15px_rgba(236,102,8,0.3)] transition-all cursor-default group text-center h-20">
+                <span
+                  class="font-bold text-gray-300 group-hover:text-white group-hover:scale-105 transition-all text-sm">Cinemax</span>
+              </div>
+            </div>
+            <div id="tab-deportes"
+              class="channel-tab-content hidden grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 animate-fade-in">
+              <div
+                class="bg-white/5 border border-white/10 rounded-xl p-4 flex flex-col items-center justify-center hover:bg-white/10 hover:border-brand-primary/50 hover:shadow-[0_0_15px_rgba(236,102,8,0.3)] transition-all cursor-default group text-center h-20">
+                <span
+                  class="font-bold text-gray-300 group-hover:text-white group-hover:scale-105 transition-all text-sm">TyC
+                  Sports</span>
+              </div>
+              <div
+                class="bg-white/5 border border-white/10 rounded-xl p-4 flex flex-col items-center justify-center hover:bg-white/10 hover:border-brand-primary/50 hover:shadow-[0_0_15px_rgba(236,102,8,0.3)] transition-all cursor-default group text-center h-20">
+                <span
+                  class="font-bold text-gray-300 group-hover:text-white group-hover:scale-105 transition-all text-sm">ESPN</span>
+              </div>
+              <div
+                class="bg-white/5 border border-white/10 rounded-xl p-4 flex flex-col items-center justify-center hover:bg-white/10 hover:border-brand-primary/50 hover:shadow-[0_0_15px_rgba(236,102,8,0.3)] transition-all cursor-default group text-center h-20">
+                <span
+                  class="font-bold text-gray-300 group-hover:text-white group-hover:scale-105 transition-all text-sm">ESPN
+                  2</span>
+              </div>
+              <div
+                class="bg-white/5 border border-white/10 rounded-xl p-4 flex flex-col items-center justify-center hover:bg-white/10 hover:border-brand-primary/50 hover:shadow-[0_0_15px_rgba(236,102,8,0.3)] transition-all cursor-default group text-center h-20">
+                <span
+                  class="font-bold text-gray-300 group-hover:text-white group-hover:scale-105 transition-all text-sm">ESPN
+                  3</span>
+              </div>
+              <div
+                class="bg-white/5 border border-white/10 rounded-xl p-4 flex flex-col items-center justify-center hover:bg-white/10 hover:border-brand-primary/50 hover:shadow-[0_0_15px_rgba(236,102,8,0.3)] transition-all cursor-default group text-center h-20">
+                <span
+                  class="font-bold text-gray-300 group-hover:text-white group-hover:scale-105 transition-all text-sm">ESPN
+                  4</span>
+              </div>
+              <div
+                class="bg-white/5 border border-white/10 rounded-xl p-4 flex flex-col items-center justify-center hover:bg-white/10 hover:border-brand-primary/50 hover:shadow-[0_0_15px_rgba(236,102,8,0.3)] transition-all cursor-default group text-center h-20">
+                <span
+                  class="font-bold text-gray-300 group-hover:text-white group-hover:scale-105 transition-all text-sm">Fox
+                  Sports 2</span>
+              </div>
+              <div
+                class="bg-white/5 border border-white/10 rounded-xl p-4 flex flex-col items-center justify-center hover:bg-white/10 hover:border-brand-primary/50 hover:shadow-[0_0_15px_rgba(236,102,8,0.3)] transition-all cursor-default group text-center h-20">
+                <span
+                  class="font-bold text-gray-300 group-hover:text-white group-hover:scale-105 transition-all text-sm">Fox
+                  Sports 3</span>
+              </div>
+              <div
+                class="bg-white/5 border border-white/10 rounded-xl p-4 flex flex-col items-center justify-center hover:bg-white/10 hover:border-brand-primary/50 hover:shadow-[0_0_15px_rgba(236,102,8,0.3)] transition-all cursor-default group text-center h-20">
+                <span
+                  class="font-bold text-gray-300 group-hover:text-white group-hover:scale-105 transition-all text-sm">Liga
+                  1 Max</span>
+              </div>
+              <div
+                class="bg-white/5 border border-white/10 rounded-xl p-4 flex flex-col items-center justify-center hover:bg-white/10 hover:border-brand-primary/50 hover:shadow-[0_0_15px_rgba(236,102,8,0.3)] transition-all cursor-default group text-center h-20">
+                <span
+                  class="font-bold text-gray-300 group-hover:text-white group-hover:scale-105 transition-all text-sm">Gol
+                  Peru</span>
+              </div>
+            </div>
+            <div id="tab-factuales"
+              class="channel-tab-content hidden grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 animate-fade-in">
+              <div
+                class="bg-white/5 border border-white/10 rounded-xl p-4 flex flex-col items-center justify-center hover:bg-white/10 hover:border-brand-primary/50 hover:shadow-[0_0_15px_rgba(236,102,8,0.3)] transition-all cursor-default group text-center h-20">
+                <span
+                  class="font-bold text-gray-300 group-hover:text-white group-hover:scale-105 transition-all text-sm">Discovery
+                  Turbo</span>
+              </div>
+              <div
+                class="bg-white/5 border border-white/10 rounded-xl p-4 flex flex-col items-center justify-center hover:bg-white/10 hover:border-brand-primary/50 hover:shadow-[0_0_15px_rgba(236,102,8,0.3)] transition-all cursor-default group text-center h-20">
+                <span
+                  class="font-bold text-gray-300 group-hover:text-white group-hover:scale-105 transition-all text-sm">NatGeo</span>
+              </div>
+              <div
+                class="bg-white/5 border border-white/10 rounded-xl p-4 flex flex-col items-center justify-center hover:bg-white/10 hover:border-brand-primary/50 hover:shadow-[0_0_15px_rgba(236,102,8,0.3)] transition-all cursor-default group text-center h-20">
+                <span
+                  class="font-bold text-gray-300 group-hover:text-white group-hover:scale-105 transition-all text-sm">History
+                  Channel</span>
+              </div>
+              <div
+                class="bg-white/5 border border-white/10 rounded-xl p-4 flex flex-col items-center justify-center hover:bg-white/10 hover:border-brand-primary/50 hover:shadow-[0_0_15px_rgba(236,102,8,0.3)] transition-all cursor-default group text-center h-20">
+                <span
+                  class="font-bold text-gray-300 group-hover:text-white group-hover:scale-105 transition-all text-sm">Discovery
+                  Channel</span>
+              </div>
+              <div
+                class="bg-white/5 border border-white/10 rounded-xl p-4 flex flex-col items-center justify-center hover:bg-white/10 hover:border-brand-primary/50 hover:shadow-[0_0_15px_rgba(236,102,8,0.3)] transition-all cursor-default group text-center h-20">
+                <span
+                  class="font-bold text-gray-300 group-hover:text-white group-hover:scale-105 transition-all text-sm">Animal
+                  Planet</span>
+              </div>
+              <div
+                class="bg-white/5 border border-white/10 rounded-xl p-4 flex flex-col items-center justify-center hover:bg-white/10 hover:border-brand-primary/50 hover:shadow-[0_0_15px_rgba(236,102,8,0.3)] transition-all cursor-default group text-center h-20">
+                <span
+                  class="font-bold text-gray-300 group-hover:text-white group-hover:scale-105 transition-all text-sm">H2</span>
+              </div>
+            </div>
+            <div id="tab-variados"
+              class="channel-tab-content hidden grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 animate-fade-in">
+              <div
+                class="bg-white/5 border border-white/10 rounded-xl p-4 flex flex-col items-center justify-center hover:bg-white/10 hover:border-brand-primary/50 hover:shadow-[0_0_15px_rgba(236,102,8,0.3)] transition-all cursor-default group text-center h-20">
+                <span
+                  class="font-bold text-gray-300 group-hover:text-white group-hover:scale-105 transition-all text-sm">TLC</span>
+              </div>
+              <div
+                class="bg-white/5 border border-white/10 rounded-xl p-4 flex flex-col items-center justify-center hover:bg-white/10 hover:border-brand-primary/50 hover:shadow-[0_0_15px_rgba(236,102,8,0.3)] transition-all cursor-default group text-center h-20">
+                <span
+                  class="font-bold text-gray-300 group-hover:text-white group-hover:scale-105 transition-all text-sm">Discovery
+                  ID</span>
+              </div>
+              <div
+                class="bg-white/5 border border-white/10 rounded-xl p-4 flex flex-col items-center justify-center hover:bg-white/10 hover:border-brand-primary/50 hover:shadow-[0_0_15px_rgba(236,102,8,0.3)] transition-all cursor-default group text-center h-20">
+                <span
+                  class="font-bold text-gray-300 group-hover:text-white group-hover:scale-105 transition-all text-sm">Home
+                  & Health</span>
+              </div>
+              <div
+                class="bg-white/5 border border-white/10 rounded-xl p-4 flex flex-col items-center justify-center hover:bg-white/10 hover:border-brand-primary/50 hover:shadow-[0_0_15px_rgba(236,102,8,0.3)] transition-all cursor-default group text-center h-20">
+                <span
+                  class="font-bold text-gray-300 group-hover:text-white group-hover:scale-105 transition-all text-sm">TLN</span>
+              </div>
+              <div
+                class="bg-white/5 border border-white/10 rounded-xl p-4 flex flex-col items-center justify-center hover:bg-white/10 hover:border-brand-primary/50 hover:shadow-[0_0_15px_rgba(236,102,8,0.3)] transition-all cursor-default group text-center h-20">
+                <span
+                  class="font-bold text-gray-300 group-hover:text-white group-hover:scale-105 transition-all text-sm">Universal
+                  Crime</span>
+              </div>
+              <div
+                class="bg-white/5 border border-white/10 rounded-xl p-4 flex flex-col items-center justify-center hover:bg-white/10 hover:border-brand-primary/50 hover:shadow-[0_0_15px_rgba(236,102,8,0.3)] transition-all cursor-default group text-center h-20">
+                <span
+                  class="font-bold text-gray-300 group-hover:text-white group-hover:scale-105 transition-all text-sm">Canal
+                  de las Estrellas</span>
+              </div>
+              <div
+                class="bg-white/5 border border-white/10 rounded-xl p-4 flex flex-col items-center justify-center hover:bg-white/10 hover:border-brand-primary/50 hover:shadow-[0_0_15px_rgba(236,102,8,0.3)] transition-all cursor-default group text-center h-20">
+                <span
+                  class="font-bold text-gray-300 group-hover:text-white group-hover:scale-105 transition-all text-sm">E!
+                  Entertainment</span>
+              </div>
+              <div
+                class="bg-white/5 border border-white/10 rounded-xl p-4 flex flex-col items-center justify-center hover:bg-white/10 hover:border-brand-primary/50 hover:shadow-[0_0_15px_rgba(236,102,8,0.3)] transition-all cursor-default group text-center h-20">
+                <span
+                  class="font-bold text-gray-300 group-hover:text-white group-hover:scale-105 transition-all text-sm">RCN
+                  Novelas</span>
+              </div>
+              <div
+                class="bg-white/5 border border-white/10 rounded-xl p-4 flex flex-col items-center justify-center hover:bg-white/10 hover:border-brand-primary/50 hover:shadow-[0_0_15px_rgba(236,102,8,0.3)] transition-all cursor-default group text-center h-20">
+                <span
+                  class="font-bold text-gray-300 group-hover:text-white group-hover:scale-105 transition-all text-sm">Telemundo</span>
+              </div>
+              <div
+                class="bg-white/5 border border-white/10 rounded-xl p-4 flex flex-col items-center justify-center hover:bg-white/10 hover:border-brand-primary/50 hover:shadow-[0_0_15px_rgba(236,102,8,0.3)] transition-all cursor-default group text-center h-20">
+                <span
+                  class="font-bold text-gray-300 group-hover:text-white group-hover:scale-105 transition-all text-sm">Universal
+                  Comedia</span>
+              </div>
+            </div>
+            <div id="tab-documentales"
+              class="channel-tab-content hidden grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 animate-fade-in">
+              <div
+                class="bg-white/5 border border-white/10 rounded-xl p-4 flex flex-col items-center justify-center hover:bg-white/10 hover:border-brand-primary/50 hover:shadow-[0_0_15px_rgba(236,102,8,0.3)] transition-all cursor-default group text-center h-20">
+                <span
+                  class="font-bold text-gray-300 group-hover:text-white group-hover:scale-105 transition-all text-sm">Love
+                  Nature</span>
+              </div>
+              <div
+                class="bg-white/5 border border-white/10 rounded-xl p-4 flex flex-col items-center justify-center hover:bg-white/10 hover:border-brand-primary/50 hover:shadow-[0_0_15px_rgba(236,102,8,0.3)] transition-all cursor-default group text-center h-20">
+                <span
+                  class="font-bold text-gray-300 group-hover:text-white group-hover:scale-105 transition-all text-sm">TVE</span>
+              </div>
+              <div
+                class="bg-white/5 border border-white/10 rounded-xl p-4 flex flex-col items-center justify-center hover:bg-white/10 hover:border-brand-primary/50 hover:shadow-[0_0_15px_rgba(236,102,8,0.3)] transition-all cursor-default group text-center h-20">
+                <span
+                  class="font-bold text-gray-300 group-hover:text-white group-hover:scale-105 transition-all text-sm">Bethel</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Modal de WhatsApp -->
+    <div id="wa-modal"
+      class="hidden transform transition-all duration-300 origin-bottom-right scale-0 opacity-0 mb-4 w-80 shadow-[0_8px_32px_rgba(0,0,0,0.5)] border border-brand-cyan/20 rounded-2xl overflow-hidden glass-card">
+      <!-- Disparador del Parseador de Tailwind CDN -->
+      <span class="scale-100 opacity-100 hidden"></span>
+      <!-- Encabezado del Modal -->
+      <div class="bg-gradient-to-r from-[#075E54] to-[#128C7E] p-4 flex justify-between items-center text-white">
+        <div class="flex items-center space-x-3">
+          <img src="img/whatsapp-icon.png" alt="WhatsApp" class="w-8 h-8 object-contain">
+          <h4 class="font-bold text-sm leading-tight text-left">Hola 👋, ¿te ayudamos por WhatsApp?</h4>
+        </div>
+        <button id="close-wa-modal" class="text-white hover:text-gray-200 focus:outline-none ml-2">
+          <i class="ph-bold ph-x text-lg"></i>
+        </button>
+      </div>
+      <!-- Cuerpo del Modal (Opciones) -->
+      <div class="p-4 bg-[#0a0410] bg-opacity-95 space-y-3">
+        <a href="https://wa.me/51933046750?text=Hola,%20soy%20cliente%20y%20tengo%20una%20consulta" target="_blank"
+          class="flex items-center p-3 rounded-xl bg-white/5 hover:bg-white/10 border border-white/5 transition-colors group">
+          <span class="text-2xl mr-3 group-hover:scale-110 transition-transform">🧑‍💼</span>
+          <span class="text-sm font-bold text-gray-200 group-hover:text-white">Soy Cliente y tengo una consulta</span>
+        </a>
+        <a href="https://wa.me/51933046750?text=Hola,%20quiero%20comprar%20Internet" target="_blank"
+          class="flex items-center p-3 rounded-xl bg-white/5 hover:bg-white/10 border border-white/5 transition-colors group">
+          <span class="text-2xl mr-3 group-hover:scale-110 transition-transform">🚀</span>
+          <span class="text-sm font-bold text-gray-200 group-hover:text-white">Quiero comprar Internet</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- Botón Flotante con Tooltip -->
+    <div class="relative group">
+      <!-- Tooltip -->
+      <div
+        class="absolute right-full top-1/2 -translate-y-1/2 mr-4 px-3 py-1.5 bg-white text-gray-900 text-sm font-bold rounded-lg shadow-lg opacity-0 pointer-events-none group-hover:opacity-100 transition-opacity whitespace-nowrap">
+        ¿Necesitas Ayuda?
+        <!-- Flecha del Tooltip -->
+        <div
+          class="absolute top-1/2 -right-1.5 -translate-y-1/2 border-t-4 border-b-4 border-l-4 border-transparent border-l-white">
+        </div>
+      </div>
+      <!-- Botón -->
+      <button id="wa-btn"
+        class="w-16 h-16 rounded-full bg-[#25D366] hover:bg-[#1EBE5D] flex items-center justify-center shadow-[0_0_20px_rgba(37,211,102,0.4)] hover:shadow-[0_0_30px_rgba(37,211,102,0.6)] transition-all transform hover:-translate-y-1 focus:outline-none">
+        <img src="img/whatsapp-icon.png" alt="WhatsApp" class="w-10 h-10 object-contain">
+      </button>
+    </div>
+  </div>
+
+  <!-- JS de Swiper -->
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <!-- JS Personalizado -->
+  <script src="js/main.js?v=1.1"></script>
+</body>
+
+</html>
